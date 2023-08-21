@@ -780,7 +780,7 @@
       if (!(node instanceof Element)) return Promise.resolve(node);
 
       return inlineWebkitMaskImage(node).then(function () {
-        if (node instanceof HTMLImageElement) return newImage(node).inline(util.getAndEncode);
+        if (node instanceof HTMLImageElement) return newImage(node).inline();
         else
           return Promise.all(
             util.asArray(node.childNodes).map(function (child) {
