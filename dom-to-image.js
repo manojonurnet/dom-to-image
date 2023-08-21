@@ -528,9 +528,9 @@
           } else {
             fail(
               "timeout of " +
-                TIMEOUT +
-                "ms occured while fetching resource: " +
-                url
+              TIMEOUT +
+              "ms occured while fetching resource: " +
+              url
             );
           }
         }
@@ -764,7 +764,7 @@
       if (!(node instanceof Element)) return Promise.resolve(node);
 
       return inlineWebkitMaskImage(node).then(function () {
-        if (node instanceof HTMLImageElement) return newImage(node).inline();
+        if (node instanceof HTMLImageElement) return newImage(node).inline(util.getAndEncode);
         else
           return Promise.all(
             util.asArray(node.childNodes).map(function (child) {
@@ -778,7 +778,7 @@
 
         if (!webkitMaskImage) return Promise.resolve(node);
 
-        return inliner
+        return this
           .inlineAll(webkitMaskImage)
           .then(function (inlined) {
             node.style.setProperty(
@@ -797,7 +797,7 @@
 
         if (!MaskImage) return Promise.resolve(node);
 
-        return inliner
+        return this
           .inlineAll(MaskImage)
           .then(function (inlined) {
             node.style.setProperty(
@@ -816,7 +816,7 @@
 
         if (!background) return Promise.resolve(node);
 
-        return inliner
+        return this
           .inlineAll(background)
           .then(function (inlined) {
             node.style.setProperty(
