@@ -794,7 +794,7 @@
 
         if (!webkitMaskImage) return Promise.resolve(node);
 
-        return this
+        return images
           .inlineAll(webkitMaskImage)
           .then(function (inlined) {
             node.style.setProperty(
@@ -813,7 +813,7 @@
 
         if (!MaskImage) return Promise.resolve(node);
 
-        return this
+        return images
           .inlineAll(MaskImage)
           .then(function (inlined) {
             node.style.setProperty(
@@ -832,7 +832,7 @@
 
         if (!background) return Promise.resolve(node);
 
-        return this
+        return images
           .inlineAll(background)
           .then(function (inlined) {
             node.style.setProperty(
